@@ -41,7 +41,7 @@ router.route('/').get((req, res) => {
 
 
 // Update Athlete
-router.route('/update-Athlete/:id').put((req, res, next) => {
+router.route('/update-athlete/:id').put((req, res, next) => {
   athleteSchema.findByIdAndUpdate(req.params.id, {
     $set: req.body
   }, (error, data) => {

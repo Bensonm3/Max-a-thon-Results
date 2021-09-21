@@ -37,3 +37,9 @@ body h3 {
   text-decoration: none;
   color: #ffffff;
 }
+
+#submitBtn{
+  color: white;
+  backgroundColor: #D95D33;
+
+}

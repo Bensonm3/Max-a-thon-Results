@@ -8,9 +8,17 @@ export default class StudentList extends Component {
 
   constructor(props) {
     super(props)
+    this.sortByDistance = this.sortByDistance.bind(this);
+    this.sortByActivity = this.sortByActivity.bind(this);
+    this.sortByTime = this.sortByTime.bind(this)
+    this.DataTable = this.DataTable.bind(this);
     this.state = {
       athletes: [],
-      search: null
+      search: null,
+      distanceSort: true,
+      activitySort: true,
+      timeSort: false
+
     };
   }
 
@@ -28,41 +36,120 @@ export default class StudentList extends Component {
       })
   }
 
+  componentDidUpdate(){
+  }
+
   DataTable() {
-    let dataArray = [this.state.athletes]
-    console.log(dataArray[0][0])
-    console.log(this.state.athletes)
-    if(this.state.search == null){
-      return dataArray[0].map((res, i) => {
-        return <AthleteTableRow obj={res} key={i} />;
-      });
-    } else if(dataArray[0].includes(this.state.search,)){
-      return dataArray[0].map((res, i) => {
-        return <AthleteTableRow obj={res} key={i} />;
-      });
+    let data = this.state.athletes
+    let filteredData = data.filter((athletes) => {
+      
+      if(this.state.search === null){
+        return data
+      } else if (athletes.name.toLowerCase().includes(this.state.search.toLowerCase()) || athletes.teamName.toLowerCase().includes(this.state.search.toLowerCase())){
+        // console.log(athletes)
+        return athletes
+      }
+    })
+    return filteredData.map((res, i) => {
+      return <AthleteTableRow obj={res} key={i} />;
+    })
+  }
+
+  compareTimesAscend(a, b) {
+    if((a.hours*3600)+(a.minutes*60)+a.seconds <= (b.hours*3600)+(b.minutes*60)+b.seconds){
+      return -1;
+    } else if ((a.hours*3600)+(a.minutes*60)+a.seconds === (b.hours*3600)+(b.minutes*60)+b.seconds) {
+      return 0;
+    } else {
+      return 1
+    }
+     
+  } 
+
+  compareTimesDescend(a, b) {
+    if((a.hours*3600)+(a.minutes*60)+a.seconds >= (b.hours*3600)+(b.minutes*60)+b.seconds){
+      return -1;
+    } else if ((a.hours*3600)+(a.minutes*60)+a.seconds === (b.hours*3600)+(b.minutes*60)+b.seconds) {
+      return 0;
+    } else {
+      return 1
+    }
+     
+  } 
+
+  
+  sortByTime(e){
+    if(this.state.timeSort == false){
+      let athleteList = [...this.state.athletes]
+      const sortedList = athleteList.sort(this.compareTimesAscend);
+      this.setState({
+        athletes: sortedList, timeSort: true
+      })
+    } else {
+      let athleteList = [...this.state.athletes]
+      const sortedList = athleteList.sort(this.compareTimesDescend);
+      this.setState({
+        athletes: sortedList, timeSort: false
+      })
     }
   }
-  athleteSearch =(e) =>{
-    this.setState({search: e.target.value})
-    console.log(this.state.search)
+
+  sortByDistance(e) {
+    let athleteList = this.state.athletes;
+    if(this.state.distanceSort ==true){
+      let sortedAthletes = athleteList.sort((a, b) => (a.journey <= b.journey)? 1 : -1);
+      this.setState({
+        athletes: sortedAthletes,
+        distanceSort: false
+       })
+       e.preventDefault()
+    } else if(this.state.distanceSort ==false) {
+    
+      let sortedAthletes = athleteList.sort((a, b) => (a.journey >= b.journey)? 1 : -1);
+      this.setState({
+        athletes: sortedAthletes,
+        distanceSort: true
+       })
+       e.preventDefault()
+      }
+  }
+
+  sortByActivity(e) {
+    let athleteList = this.state.athletes;
+    if(this.state.activitySort ==true){
+      let sortedAthletes = athleteList.sort((a, b) => (a.activity <= b.activity)? 1 : -1);
+      this.setState({
+        athletes: sortedAthletes,
+        activitySort: false
+       })
+       e.preventDefault()
+    } else if(this.state.distanceSort ==false) {
+    
+      let sortedAthletes = athleteList.sort((a, b) => (a.activity >= b.activity)? 1 : -1);
+      this.setState({
+        athletes: sortedAthletes,
+        activitySort: true
+       })
+       e.preventDefault()
+      }
   }
 
 
   render() {
     
     return (<div className="table-wrapper">
-      <input onChange={this.athleteSearch}type="text" placeholder="Search for an Athlete!"></input>
+      <input onChange={(e)=>this.setState({search: e.target.value})}type="text" placeholder="Find a Team or Athlete!"></input>
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>Name</th>
-            <th>Miles Completed</th>
-            <th>Activity</th>
-            <th>Time</th>
+            <th>Bib </th>
+            <th>Miles Completed <span onClick={this.sortByDistance}> &#8597;</span></th>
+            <th>Activity Type<span onClick={this.sortByActivity}> &#8597;</span></th>
+            <th>Time<span onClick={this.sortByTime}> &#8597;</span></th>
             <th>Team Name</th>
             <th>Location</th>
             <th>Comment</th>
-            <th>total time</th>
           </tr>
         </thead>
         <tbody>

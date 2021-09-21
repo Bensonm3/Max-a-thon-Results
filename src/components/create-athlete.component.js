@@ -2,8 +2,12 @@ import React, {Component} from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import '../App.css'
+
+
 
 export default class CreateAthlete extends Component{
+  
   constructor(props){
     super(props);
     this.handleTeamChange = this.handleTeamChange.bind(this);
@@ -17,7 +21,8 @@ export default class CreateAthlete extends Component{
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleCommentChange = this.handleCommentChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-
+    this.handleBibChange = this.handleBibChange.bind(this);
+    
     this.state = {
       team: false,
       teamName: 'N/A',
@@ -30,12 +35,18 @@ export default class CreateAthlete extends Component{
       totalTime: '0',
       location: '',
       comment:'',
+      teamDistance: '',
+      bib: ''
     }
   };
+
+
+
   handleJourneyChange =(e) =>{
     console.log(e.target.value)
     if(e.target.value === "Team"){
       this.setState({team: true})
+      this.setState({journey: e.target.value})
     } else{
       this.setState({journey: e.target.value})
       this.setState({team: false})
@@ -46,8 +57,9 @@ export default class CreateAthlete extends Component{
     console.log(this.state.teamName)
   }
   handleTeamDistanceChange=(e) =>{
-    this.setState({journey: e.target.value})
+    this.setState({teamDistance: e.target.value})
     console.log("team distance "+this.state.journey)
+    e.preventDefault()
   }
   handleNameChange = (e) =>{
     this.setState({name: e.target.value})
@@ -77,24 +89,30 @@ export default class CreateAthlete extends Component{
     this.setState({comment: e.target.value})
     console.log(this.state.comment)
   }
+  handleBibChange =(e)=>{
+    this.setState({bib: e.target.value})
+    console.log(this.state.bib)
+  }
   onSubmit(e){
     e.preventDefault()
-    if(this.state.team !== false){
-      console.log("its a team")
-      this.setState({journey: this.state.teamDistance, teamName: "N/A"})
-      console.log(this.state.journey)
+    let athleteJourney;
+    if(this.state.team == true){
+      athleteJourney = parseInt(this.state.teamDistance)
+    } else {
+      athleteJourney = parseInt(this.state.journey)
     }
     const athleteObject = {
       teamName: this.state.teamName,
       name: this.state.name,
-      journey: this.state.journey,
+      journey: parseInt(athleteJourney),
       activity: this.state.activity,
-      hours: this.state.hours,
-      minutes: this.state.minutes,
-      seconds: this.state.seconds,
-      totalTime: +this.state.seconds+(+this.state.minutes*60)+(+this.state.hours*3600),
+      hours: parseInt(this.state.hours),
+      minutes: parseInt(this.state.minutes),
+      seconds: parseInt(this.state.seconds),
       location: this.state.location,
       comment:this.state.comment,
+      bib: this.state.bib
+
     }
     console.log(athleteObject)
   
@@ -112,35 +130,26 @@ export default class CreateAthlete extends Component{
       seconds: '',
       location: '',
       comment:'',
+      bib:''
     });
+    window.location.href = "http://localhost:3000/athlete-list";
   }
   
   render(){
-    const TeamForm = () =>(
-        <Form.Group controlId="Name">
-            <Form.Label>Team Name</Form.Label>
-                <select value = {this.state.teamName} onChange={this.handleTeamChange} name="teamName" id="teamName">
-                    <option value="Farther Together">Farther Together</option>
-                    <option value="Happy Feet">Happy Feet</option>
-                    <option value="Magtulungan Tayo">Magtulungan Tayo</option>
-                    <option value="Mighty Max">Mighty Max</option>
-                    <option value="Pengy Peeps">Pengy Peeps</option>
-                    <option value="Reimagining CML Together">Reimagining CML Together</option>
-                    <option value="Tanner Team">Tanner Team</option>
-                </select>
-                <br></br>
-                <Form.Label>How long was your journey?</Form.Label>
-                <input value={this.state.teamDistance} onChange={this.handleTeamDistanceChange} type="number" id="Miles" min="0"  max='135' name="miles"/>Miles
-                <br></br>
-            </Form.Group>
-            
-                  
-    )
+    const style = {
+      display: 'none',
+    }
     return (<div className="form-wrapper">
       <Form onSubmit={this.onSubmit}>
         <Form.Group controlId="Name">
           <Form.Label>Name</Form.Label>
           <Form.Control type="text" required={true} onChange={this.handleNameChange}/>
+        </Form.Group>
+        <Form.Group controlId="Bib">
+          <br></br>
+            <Form.Label>Add your Bib Number, this is the three digit number found on your official Max-a-thon race bib</Form.Label>
+            <br></br>
+            <input onChange={this.handleBibChange} type="number" min="100" max="999" id="comments" required={true} name="bib"/>
         </Form.Group>
         <br></br>
         <Form.Group controlId="Journey">
@@ -153,8 +162,29 @@ export default class CreateAthlete extends Component{
                 <option value="Team">Team Journey</option>
             </select>
         </Form.Group>
+        
         <br></br>
-        {this.state.team ? <TeamForm/> : false}
+        <div style={this.state.team ? undefined: style}>
+        <Form.Group controlId="TeamName">
+          <Form.Label>Team Name</Form.Label>{'  '}
+          <br></br>
+              <select value = {this.state.teamName} onChange={this.handleTeamChange} name="teamName" id="teamName">
+                  <option value="Farther Together">Farther Together</option>
+                  <option value="Happy Feet">Happy Feet</option>
+                  <option value="Magtulungan Tayo">Magtulungan Tayo</option>
+                  <option value="Mighty Max">Mighty Max</option>
+                  <option value="Pengy Peeps">Pengy Peeps</option>
+                  <option value="Reimagining CML Together">Reimagining CML Together</option>
+                  <option value="Tanner Team">Tanner Team</option>
+              </select>
+              <br></br><br></br>
+              <Form.Label>How long was your journey? </Form.Label>
+              <br></br>
+              <input placeholder='0' onChange={this.handleTeamDistanceChange} step='1' type="number" id="Miles" min="0"  max='135' name="miles"/> Miles
+              <br></br><br></br>
+          </Form.Group> 
+          </div>
+        {/* {this.state.team ? <TeamForm/> : false} */}
         <Form.Group controlId="Activity">
             <Form.Label>Choose your Activity</Form.Label>
             <br></br>
@@ -169,9 +199,9 @@ export default class CreateAthlete extends Component{
         <Form.Group controlId="Time">
             <Form.Label>Record your time</Form.Label>
             <br></br>
-            <input onChange={this.handleHourChange}type="number" id="hours" required={true} min='0' max='23' name="hours"/>Hours 
-            <input onChange={this.handleMinuteChange} type="number" id="minutes" required={true} min='0' max='59' name="minutes"/>Minutes 
-            <input onChange={this.handleSecondChange}type="number" id="seconds" required={true} min='0' max='59' name="seconds"/>Seconds
+            <input onChange={this.handleHourChange}type="number" placeholder='0' id="hours" required={true} min='0' max='23' name="hours"/> Hours{' '} 
+            <input onChange={this.handleMinuteChange} type="number" placeholder='0' id="minutes" required={true} min='0' max='59' name="minutes"/> Minutes{' '}  
+            <input onChange={this.handleSecondChange}type="number" placeholder='0' id="seconds" required={true} min='0' max='59' name="seconds"/> Seconds{' '} 
         </Form.Group>
         <br></br>
         <Form.Group controlId="Location">
@@ -179,15 +209,19 @@ export default class CreateAthlete extends Component{
             <br></br>
             <input onChange={this.handleLocationChange} type="text" id="location" required={true} name="location"/>
         </Form.Group>
+        
         <Form.Group controlId="Comments">
+          <br></br>
             <Form.Label>Share your thoughts! How did it go? Shout out to your teammates!</Form.Label>
             <br></br>
             <input onChange={this.handleCommentChange} type="text" id="comments" required={false} name="comments"/>
         </Form.Group>
         <br></br>
-        <Button variant="danger" size="lg" block="block" type="submit">
-          Submit Result!
-        </Button>
+        
+            <Button id="submitBtn"variant="danger" size="lg" block="block" type="submit">
+              Submit Result!
+            </Button>
+          
       </Form>
     </div>);
   }

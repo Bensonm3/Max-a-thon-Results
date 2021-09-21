@@ -6,7 +6,7 @@ let athleteSchema = new Schema({
     type: String
   },
   journey: {
-    type: String
+    type: Number
   },
   teamName: {
     type: String
@@ -31,6 +31,9 @@ let athleteSchema = new Schema({
   },
   activity: {
     type: String
+  },
+  bib :{
+    type: Number
   }
 }, {
     collection: 'athletes'
