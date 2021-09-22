@@ -43,3 +43,21 @@ body h3 {
   backgroundColor: #D95D33;
 
 }
+.commentRow{
+  padding-right: 6em;
+  padding-left: 6em;
+  color: black;
+}
+
+.nameRow{
+  padding-right: 2em;
+  padding-left: 2em;
+}
+.teamNameRow{
+  padding-right: 2em;
+  padding-left: 2em;
+}
+.activityRow{
+  padding-right: 2em;
+  padding-left: 2em;
+}

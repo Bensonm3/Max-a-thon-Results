@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 import AthleteTableRow from './AthleteTableRow';
-
+import '../App.css'
 
 export default class StudentList extends Component {
 
@@ -23,7 +23,11 @@ export default class StudentList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/athletes/')
+    // axios.get('http://localhost:4000/athletes/')
+    axios({
+      method: 'get',
+      url: '/athletes'
+    })
       .then(res => {
         this.setState({
           athletes: res.data,
@@ -142,14 +146,14 @@ export default class StudentList extends Component {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Name</th>
+            <th><span className="nameRow">Name</span></th>
             <th>Bib </th>
             <th>Miles Completed <span onClick={this.sortByDistance}> &#8597;</span></th>
-            <th>Activity Type<span onClick={this.sortByActivity}> &#8597;</span></th>
+            <th><span className="activityRow">Activity<span onClick={this.sortByActivity}> &#8597;</span></span></th>
             <th>Time<span onClick={this.sortByTime}> &#8597;</span></th>
-            <th>Team Name</th>
-            <th>Location</th>
-            <th>Comment</th>
+            <th><span className="teamNameRow">Team</span></th>
+            <th><span className="teamNameRow">Location</span></th>
+            <th><span className="commentRow">Comments</span></th>
           </tr>
         </thead>
         <tbody>
