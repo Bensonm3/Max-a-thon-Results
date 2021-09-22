@@ -11,7 +11,7 @@ const athleteRoute = require('../backend/routes/athlete.route')
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.db, {
-  useNewUrlParser: true
+  useNewUrlParser: true, useUnifiedTopology: true
 }).then(() => {
   console.log('Database sucessfully connected!')
 },
@@ -37,7 +37,7 @@ app.listen(port, () => {
 
 // 404 Error
 app.use((req, res, next) => {
-  next(createError(404));
+   next(createError(404));
 });
 
 app.use(function (err, req, res, next) {
