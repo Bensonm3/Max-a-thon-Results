@@ -3,10 +3,6 @@ let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
 let dbConfig = require('./database/db');
-const path = require("path")
-require("dotenv").config()
-
-
 
 
 // Express Route
