@@ -122,7 +122,10 @@ export default class CreateAthlete extends Component{
     })
     // axios.post('http://localhost:4000/athletes/create-athlete', athleteObject)
       .then(res => 
-        console.log(res.data));
+        console.log(res.data))
+        .catch(err=>{
+          console.log(err)
+          });
 
     this.setState({
       teamName: '',
