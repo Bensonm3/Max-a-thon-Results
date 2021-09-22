@@ -136,7 +136,7 @@ export default class CreateAthlete extends Component{
       comment:'',
       bib:''
     });
-    window.location.href = "http://localhost:3000/athlete-list";
+    window.location.href = "https://max-a-thon-results.herokuapp.com/athlete-list";
   }
   
   render(){
