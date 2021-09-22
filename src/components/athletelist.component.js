@@ -27,7 +27,7 @@ export default class StudentList extends Component {
     console.log("here")
     axios({
       method: 'get',
-      url: '/athletes/'
+      url: '/athletes'
     })
       .then(res => {
         this.setState({
