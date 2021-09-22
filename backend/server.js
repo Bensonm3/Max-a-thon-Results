@@ -14,7 +14,7 @@ const athleteRoute = require('../backend/routes/athlete.route')
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(dbConfig.db, {
   useNewUrlParser: true
 }).then(() => {
   console.log('Database sucessfully connected!')
