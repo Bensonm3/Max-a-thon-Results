@@ -115,8 +115,8 @@ export default class CreateAthlete extends Component{
 
     }
     console.log(athleteObject)
-    axios.post('/athletes/create-athlete',athleteObject)
-    // axios.post('http://localhost:4000/athletes/create-athlete', athleteObject)
+    //  axios.post('/athletes/create-athlete',athleteObject)
+    axios.post('http://localhost:4000/athletes/create-athlete', athleteObject)
       .then(res => 
         console.log(res.data))
         .catch(err=>{
@@ -136,7 +136,7 @@ export default class CreateAthlete extends Component{
       comment:'',
       bib:''
     });
-    window.location.href = "https://max-a-thon-results.herokuapp.com/athlete-list";
+    window.location.href = "/athlete-list";
   }
   
   render(){

@@ -11,8 +11,8 @@ export default class AthleteTableRow extends Component {
     }
 
     deleteAthlete() {
-        // axios.delete('http://localhost:4000/athletes/delete-athlete/' + this.props.obj._id)
-        axios.delete('/athletes/delete-athlete/'+ this.props.obj._id)   
+          axios.delete('http://localhost:4000/athletes/delete-athlete/' + this.props.obj._id)
+        //  axios.delete('/athletes/delete-athlete/'+ this.props.obj._id)   
             .then((res) => {
                 console.log('athlete successfully deleted!')
             }).catch((error) => {
