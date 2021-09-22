@@ -4,6 +4,8 @@ let cors = require('cors');
 let bodyParser = require('body-parser');
 let dbConfig = require('./database/db');
 
+
+
 // Express Route
 const athleteRoute = require('../backend/routes/athlete.route')
 
