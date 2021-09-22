@@ -24,9 +24,10 @@ export default class StudentList extends Component {
 
   componentDidMount() {
     // axios.get('http://localhost:4000/athletes/')
+    console.log("here")
     axios({
       method: 'get',
-      url: '/athletes'
+      url: '/athletes/'
     })
       .then(res => {
         this.setState({
