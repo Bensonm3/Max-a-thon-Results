@@ -23,8 +23,8 @@ export default class StudentList extends Component {
   }
 
   componentDidMount() {
-        // axios.get('http://localhost:4000/athletes/')
-        axios.get('/athletes/')
+         axios.get('http://localhost:4000/athletes/')
+        // axios.get('/athletes/')
       .then(res => {
         console.log(res)
         this.setState({
