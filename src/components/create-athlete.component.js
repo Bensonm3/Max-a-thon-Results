@@ -115,11 +115,7 @@ export default class CreateAthlete extends Component{
 
     }
     console.log(athleteObject)
-    axios({
-      method: "post",
-      url: '/athletes/create-athlete',
-      data: athleteObject
-    })
+    axios.post('/athletes/create-athlete',athleteObject)
     // axios.post('http://localhost:4000/athletes/create-athlete', athleteObject)
       .then(res => 
         console.log(res.data))
