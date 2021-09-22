@@ -30,6 +30,7 @@ export default class StudentList extends Component {
       url: '/athletes'
     })
       .then(res => {
+        console.log(res)
         this.setState({
           athletes: res.data,
 
