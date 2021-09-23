@@ -10,7 +10,7 @@ const athleteRoute = require('../backend/routes/athlete.route')
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.db, {
+mongoose.connect(process.env.MONGODB_URI || dbConfig.db, {
   useNewUrlParser: true, useUnifiedTopology: true
 }).then(() => {
   console.log('Database sucessfully connected!')
@@ -27,6 +27,11 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cors());
 app.use('/athletes', athleteRoute)
+
+app.use(express.static(path.join(__dirname, 'build')));
+    
+    app.get('/', function (req, res) {
+      res.sendFile(path.join(__dirname, 'build', 'index.html'));
 
 
 // PORT
