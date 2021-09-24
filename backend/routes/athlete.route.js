@@ -3,7 +3,7 @@ let mongoose = require('mongoose'),
   router = express.Router();
 
 // Athlete Model
-let athleteSchema = require('../models/Athlete');
+let athleteSchema = require('../Models/Athlete');
 
 // CREATE Athlete
 router.route('https://max-a-thon-backend.herokuapp.com/create-athlete').post((req, res, next) => {
