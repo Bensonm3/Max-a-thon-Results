@@ -24,7 +24,7 @@ export default class StudentList extends Component {
 
   componentDidMount() {
         // axios.get('http://localhost:4000/athletes/')
-        axios.get('/athletes/')
+        axios.get('https://max-a-thon-backend.herokuapp.com//athletes/')
       .then(res => {
         console.log(res)
         this.setState({

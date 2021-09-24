@@ -6,7 +6,7 @@ let mongoose = require('mongoose'),
 let athleteSchema = require('../models/Athlete');
 
 // CREATE Athlete
-router.route('/create-athlete').post((req, res, next) => {
+router.route('https://max-a-thon-backend.herokuapp.com/create-athlete').post((req, res, next) => {
   athleteSchema.create(req.body, (error, data) => {
     if (error) {
       return next(error)
@@ -18,7 +18,7 @@ router.route('/create-athlete').post((req, res, next) => {
 });
 
 // READ Athletes
-router.route('/').get((req, res) => {
+router.route('https://max-a-thon-backend.herokuapp.com/').get((req, res) => {
   athleteSchema.find((error, data) => {
     if (error) {
       return next(error)
@@ -56,7 +56,7 @@ router.route('/update-athlete/:id').put((req, res, next) => {
 })
 
 // Delete athlete
-router.route('/delete-athlete/:id').delete((req, res, next) => {
+router.route('https://max-a-thon-backend.herokuapp.com/delete-athlete/:id').delete((req, res, next) => {
   athleteSchema.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error);
