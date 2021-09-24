@@ -124,7 +124,7 @@ export default class CreateAthlete extends Component{
     // axios.post('http://localhost:4000/athletes/create-athlete', athleteObject)
       .then(res => 
         console.log(res.data),
-        // window.location.href = "/athlete-list"
+         window.location.href = "/athlete-list"
         )
         
         .catch(err=>{
