@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-const qs = require('querystring')  
 import '../App.css'
 
 
@@ -116,6 +115,7 @@ export default class CreateAthlete extends Component{
 
     }
     console.log(athleteObject)
+    const qs = require('querystring')  
       axios.post('https://max-a-thon-backend.herokuapp.com/athletes/create-athlete', qs.stringify(athleteObject), {headers: {'Content-Type' : 'application/x-www-form-urlencoded'}})
     //    axios.post("/" , qs.stringify( { title: "update", tag: "h1" }), {
     //     headers: {
