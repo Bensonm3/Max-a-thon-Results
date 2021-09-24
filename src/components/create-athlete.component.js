@@ -181,6 +181,7 @@ export default class CreateAthlete extends Component{
           <Form.Label>Team Name</Form.Label>{'  '}
           <br></br>
               <select value = {this.state.teamName} onChange={this.handleTeamChange} name="teamName" id="teamName">
+              <option value="N/A">Choose a Team</option>
                   <option value="Farther Together">Farther Together</option>
                   <option value="Happy Feet">Happy Feet</option>
                   <option value="Magtulungan Tayo">Magtulungan Tayo</option>
