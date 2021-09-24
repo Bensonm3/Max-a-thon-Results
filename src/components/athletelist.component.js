@@ -159,6 +159,7 @@ export default class StudentList extends Component {
           {this.DataTable()}
         </tbody>
       </Table>
+      <div>Please contact Kim (kim.arent@themaxfoundation.org) with any issues regarding your posted result! </div>
     </div>);
   }
 }
