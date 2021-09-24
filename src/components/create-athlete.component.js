@@ -115,7 +115,9 @@ export default class CreateAthlete extends Component{
 
     }
     console.log(athleteObject)
-      axios.post('https://max-a-thon-backend.herokuapp.com/athletes/create-athlete',athleteObject)
+      axios.post('https://max-a-thon-backend.herokuapp.com/athletes/create-athlete',
+      // athleteObject
+      "test data")
     // axios.post('http://localhost:4000/athletes/create-athlete', athleteObject)
       .then(res => 
         console.log(res.data))
