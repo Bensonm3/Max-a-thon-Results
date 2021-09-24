@@ -147,7 +147,7 @@ export default class StudentList extends Component {
           <tr>
             <th><span className="nameRow">Name</span></th>
             <th>Bib </th>
-            <th className="activityRow">Miles Completed <span onClick={this.sortByDistance}> &#8597;</span></th>
+            <th className="activityRow">Miles <span onClick={this.sortByDistance}> &#8597;</span></th>
             <th><span className="activityRow">Activity<span onClick={this.sortByActivity}> &#8597;</span></span></th>
             <th>Time<span className="activityRow" onClick={this.sortByTime}> &#8597;</span></th>
             <th><span className="teamNameRow">Team</span></th>
