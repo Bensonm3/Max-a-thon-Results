@@ -26,12 +26,12 @@ export default class StudentList extends Component {
         // axios.get('http://localhost:4000/athletes/')
         axios.get('https://max-a-thon-backend.herokuapp.com/athletes/')
       .then(res => {
-        console.log(res)
+        // console.log(res)
         this.setState({
           athletes: res.data,
 
         });
-        console.log(this.state.athletes)
+        // console.log(this.state.athletes)
       })
       .catch((error) => {
         console.log(error);
@@ -119,7 +119,7 @@ export default class StudentList extends Component {
   sortByActivity(e) {
     let athleteList = this.state.athletes;
     if(this.state.activitySort ==true){
-      console.log(this.state.activity)
+      // console.log(this.state.activity)
       let sortedAthletes = athleteList.sort((a, b) => (a.activity <= b.activity)? 1 : -1);
       this.setState({
         athletes: sortedAthletes,
@@ -127,7 +127,7 @@ export default class StudentList extends Component {
        })
        e.preventDefault()
     } else if(this.state.activitySort ==false) {
-      console.log(this.state.activity)
+      // console.log(this.state.activity)
       let sortedAthletes = athleteList.sort((a, b) => (a.activity >= b.activity)? 1 : -1);
       this.setState({
         athletes: sortedAthletes,

@@ -43,7 +43,7 @@ export default class CreateAthlete extends Component{
 
 
   handleJourneyChange =(e) =>{
-    console.log(e.target.value)
+    // console.log(e.target.value)
     if(e.target.value === "Team"){
       this.setState({team: true})
       this.setState({journey: e.target.value})
@@ -54,44 +54,44 @@ export default class CreateAthlete extends Component{
   }
   handleTeamChange =(e) =>{
     this.setState({teamName: e.target.value})
-    console.log(this.state.teamName)
+    // console.log(this.state.teamName)
   }
   handleTeamDistanceChange=(e) =>{
     this.setState({teamDistance: e.target.value})
-    console.log("team distance "+this.state.journey)
+    // console.log("team distance "+this.state.journey)
     e.preventDefault()
   }
   handleNameChange = (e) =>{
     this.setState({name: e.target.value})
-    console.log(this.state.name)
+    // console.log(this.state.name)
   }
   handleActivityChange =(e) =>{
     this.setState({activity: e.target.value})
-    console.log(this.state.activity)
+    // console.log(this.state.activity)
   }
   handleHourChange =(e) =>{
     this.setState({hours: e.target.value})
-    console.log(this.state.hours)
+    // console.log(this.state.hours)
   }
   handleMinuteChange =(e) =>{
     this.setState({minutes: e.target.value})
-    console.log(this.state.minutes)
+    // console.log(this.state.minutes)
   }
   handleSecondChange =(e) =>{
     this.setState({seconds: e.target.value})
-    console.log(this.state.seconds)
+    // console.log(this.state.seconds)
   }
   handleLocationChange =(e) =>{
     this.setState({location: e.target.value})
-    console.log(this.state.location)
+    // console.log(this.state.location)
   }
   handleCommentChange =(e) =>{
     this.setState({comment: e.target.value})
-    console.log(this.state.comment)
+    // console.log(this.state.comment)
   }
   handleBibChange =(e)=>{
     this.setState({bib: e.target.value})
-    console.log(this.state.bib)
+    // console.log(this.state.bib)
   }
   onSubmit(e){
     e.preventDefault()
@@ -114,7 +114,7 @@ export default class CreateAthlete extends Component{
       bib: parseInt(this.state.bib)
 
     }
-    console.log(athleteObject) 
+    // console.log(athleteObject) 
       axios.post('https://max-a-thon-backend.herokuapp.com/athletes/create-athlete', athleteObject)
     //    axios.post("/" , qs.stringify( { title: "update", tag: "h1" }), {
     //     headers: {
@@ -123,7 +123,7 @@ export default class CreateAthlete extends Component{
     //  })
     // axios.post('http://localhost:4000/athletes/create-athlete', athleteObject)
       .then(res => 
-        console.log(res.data),
+        // console.log(res.data),
          window.location.href = "/athlete-list"
         )
         
@@ -188,6 +188,8 @@ export default class CreateAthlete extends Component{
                   <option value="Pengy Peeps">Pengy Peeps</option>
                   <option value="Reimagining CML Together">Reimagining CML Together</option>
                   <option value="Tanner Team">Tanner Team</option>
+                  <option value="Programs Team">Programs Team</option>
+                  <option value="Africa">Africa</option>
               </select>
               <br></br><br></br>
               <Form.Label>How long was your journey? </Form.Label>
