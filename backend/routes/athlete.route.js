@@ -18,7 +18,7 @@ router.route('https://max-a-thon-backend.herokuapp.com/create-athlete').post((re
 });
 
 // READ Athletes
-router.route('https://max-a-thon-backend.herokuapp.com/athletes/').get((req, res) => {
+router.route('https://max-a-thon-backend.herokuapp.com/').get((req, res) => {
   athleteSchema.find((error, data) => {
     if (error) {
       return next(error)
