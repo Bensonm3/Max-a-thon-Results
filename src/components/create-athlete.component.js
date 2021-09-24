@@ -114,9 +114,8 @@ export default class CreateAthlete extends Component{
       bib: parseInt(this.state.bib)
 
     }
-    console.log(athleteObject)
-    const qs = require('querystring')  
-      axios.post('https://max-a-thon-backend.herokuapp.com/athletes/create-athlete', qs.stringify(athleteObject), {headers: {'Content-Type' : 'application/x-www-form-urlencoded'}})
+    console.log(athleteObject) 
+      axios.post('https://max-a-thon-backend.herokuapp.com/athletes/create-athlete', athleteObject)
     //    axios.post("/" , qs.stringify( { title: "update", tag: "h1" }), {
     //     headers: {
     //     'Content-Type': 'application/x-www-form-urlencoded'
