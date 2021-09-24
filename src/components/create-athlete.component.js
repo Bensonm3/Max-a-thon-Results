@@ -116,11 +116,12 @@ export default class CreateAthlete extends Component{
     }
     console.log(athleteObject)
       axios.post('https://max-a-thon-backend.herokuapp.com/athletes/create-athlete',
-      // athleteObject
-      "test data")
+       athleteObject)
     // axios.post('http://localhost:4000/athletes/create-athlete', athleteObject)
       .then(res => 
-        console.log(res.data))
+        console.log(res.data),
+        window.location.href = "/athlete-list")
+        
         .catch(err=>{
           console.log(err)
           });
@@ -138,7 +139,7 @@ export default class CreateAthlete extends Component{
       comment:'',
       bib:''
     });
-    window.location.href = "/athlete-list";
+    
   }
   
   render(){
