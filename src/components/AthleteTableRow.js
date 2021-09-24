@@ -39,12 +39,11 @@ export default class AthleteTableRow extends Component {
                 <td>{this.props.obj.teamName}</td>
                 <td>{this.props.obj.location}</td>
                 <td>{this.props.obj.comment}</td>
-                <td>
+                {/* <td>
                     <Button onClick={this.deleteAthlete} size="sm" variant="danger">Delete</Button>
-                </td>
+                </td> */}
                 
-                <td>
-                </td>
+
             </tr>
         );
     }

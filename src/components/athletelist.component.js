@@ -16,7 +16,7 @@ export default class StudentList extends Component {
       athletes: [],
       search: null,
       distanceSort: true,
-      activitySort: true,
+      activitySort: false,
       timeSort: false
 
     };
@@ -119,14 +119,15 @@ export default class StudentList extends Component {
   sortByActivity(e) {
     let athleteList = this.state.athletes;
     if(this.state.activitySort ==true){
+      console.log(this.state.activity)
       let sortedAthletes = athleteList.sort((a, b) => (a.activity <= b.activity)? 1 : -1);
       this.setState({
         athletes: sortedAthletes,
         activitySort: false
        })
        e.preventDefault()
-    } else if(this.state.distanceSort ==false) {
-    
+    } else if(this.state.activitySort ==false) {
+      console.log(this.state.activity)
       let sortedAthletes = athleteList.sort((a, b) => (a.activity >= b.activity)? 1 : -1);
       this.setState({
         athletes: sortedAthletes,
@@ -146,9 +147,9 @@ export default class StudentList extends Component {
           <tr>
             <th><span className="nameRow">Name</span></th>
             <th>Bib </th>
-            <th>Miles Completed <span onClick={this.sortByDistance}> &#8597;</span></th>
+            <th className="activityRow">Miles Completed <span onClick={this.sortByDistance}> &#8597;</span></th>
             <th><span className="activityRow">Activity<span onClick={this.sortByActivity}> &#8597;</span></span></th>
-            <th>Time<span onClick={this.sortByTime}> &#8597;</span></th>
+            <th>Time<span className="activityRow" onClick={this.sortByTime}> &#8597;</span></th>
             <th><span className="teamNameRow">Team</span></th>
             <th><span className="teamNameRow">Location</span></th>
             <th><span className="commentRow">Comments</span></th>
