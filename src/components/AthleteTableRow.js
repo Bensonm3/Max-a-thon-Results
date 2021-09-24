@@ -38,7 +38,7 @@ export default class AthleteTableRow extends Component {
                 <td>{this.renderNum(this.props.obj.hours)}:{this.renderNum(this.props.obj.minutes)}:{this.renderNum(this.props.obj.seconds)}</td>
                 <td>{this.props.obj.teamName}</td>
                 <td>{this.props.obj.location}</td>
-                <td>{this.props.obj.comment}</td>
+                {/* <td>{this.props.obj.comment}</td> */}
                 {/* <td>
                     <Button onClick={this.deleteAthlete} size="sm" variant="danger">Delete</Button>
                 </td> */}

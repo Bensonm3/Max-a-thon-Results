@@ -224,12 +224,12 @@ export default class CreateAthlete extends Component{
             <input onChange={this.handleLocationChange} type="text" id="location" required={true} name="location"/>
         </Form.Group>
         
-        <Form.Group controlId="Comments">
+        {/* <Form.Group controlId="Comments">
           <br></br>
             <Form.Label>Share your thoughts! How did it go? Shout out to your teammates!</Form.Label>
             <br></br>
             <input onChange={this.handleCommentChange} type="text" id="comments" required={false} name="comments"/>
-        </Form.Group>
+        </Form.Group> */}
         <br></br>
         
             <Button id="submitBtn"variant="danger" size="lg" block="block" type="submit">

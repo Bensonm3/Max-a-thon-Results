@@ -152,7 +152,7 @@ export default class StudentList extends Component {
             <th>Time<span className="activityRow" onClick={this.sortByTime}> &#8597;</span></th>
             <th><span className="teamNameRow">Team</span></th>
             <th><span className="teamNameRow">Location</span></th>
-            <th><span className="commentRow">Comments</span></th>
+            {/* <th><span className="commentRow">Comments</span></th> */}
           </tr>
         </thead>
         <tbody>
