@@ -111,7 +111,7 @@ export default class CreateAthlete extends Component{
       seconds: parseInt(this.state.seconds),
       location: this.state.location,
       comment:this.state.comment,
-      bib: this.state.bib
+      bib: parseInt(this.state.bib)
 
     }
     console.log(athleteObject)
